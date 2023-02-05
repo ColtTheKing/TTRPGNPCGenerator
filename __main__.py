@@ -1,4 +1,14 @@
 import random
+import argparse
+
+# initializing parser
+parser = argparse.ArgumentParser(description ="An NPC Generator for TTRPGs",
+	formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument("-s", "--system", default='V5', help="TTRPG System & Edition")
+args = vars(parser.parse_args())
+
+# set up parameters
+system = args['system'].lower()
 
 # the file is opened within the "with". it is closed after automatically
 def get_list(file):
@@ -13,6 +23,13 @@ name_entry = names_all[random.randrange(len(names_all))]
 
 occ = get_list('occupations.txt')
 occ_entry = occ[random.randrange(len(occ))]
+
+# command line stuff practice
+
+if system == 'v5':
+	print('VAMPIRE: THE MASQUERADE')
+if system == 'dnd' or system == 'd&d':
+	print('DUNGEONS & DRAGONS')
 
 print(str(name_entry) + ", the " + str(occ_entry))
 
