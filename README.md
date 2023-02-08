@@ -1,9 +1,13 @@
-#   This is a  <h1> tag.  ##  This is a  <h2> tag. ###### This is a <h6> tag.
-Result: This is a <h1> tag.This is a  <h2> tag.This is a <h6> tag.
+# TTRPG NPC Generator
+### Use to Generate the Details, Stats, Etc. for Your Non-Player Characters
+##### Features:
+-randomized names based on the desired race and gender (or those can be randomized too)
+-randomized age, height, weight, quirks, traits, etc.
+-ability to set specific fields to not be random
+-ability to use custom data sets for names, races, quirks, etc. instead of the defaults
 
-*This text will be italic*_This will also be italic_
-**This text will be bold**__This will also be bold__
-**You **can** combine them*
-Result:This text will be italicThis will also be italic
-This text will be boldThis will also be bold
-You can combine them 
+*This text will be italic*
+_This will also be italic_
+**This text will be bold**
+__This will also be bold__
+*You **can** combine them*
