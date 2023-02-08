@@ -47,6 +47,10 @@ def generate_occupation():
     occupations = get_entries_from_file('occupations.txt')
     return occupations[random.randrange(len(occupations))]
 
+def generate_quirk():
+    quirks = get_entries_from_file('quirks.txt')
+    return quirks[random.randrange(len(quirks))]
+
 
 # initializing argument parser
 parser = argparse.ArgumentParser(description ="An NPC Generator for TTRPGs",
@@ -75,4 +79,5 @@ elif (system == 'dnd' or system == 'd&d'):
 for i in range(number):
     name_entry = generate_name(gender)
     occ_entry = generate_occupation()
-    print(str(name_entry) + ", the " + str(occ_entry))
+    quirk_entry = generate_quirk()
+    print(str(name_entry) + ", the " + str(occ_entry) + ", " + str(quirk_entry) + ".")
