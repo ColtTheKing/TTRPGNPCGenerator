@@ -2,7 +2,7 @@ import random
 import argparse
 
 supported_systems = ['v5', 'dnd', 'd&d']
-supported_genders = ['male', 'female', 'neutral', 'any']
+supported_genders = ['masc', 'femme', 'neutral', 'any']
 
 # ensure the requested system is a supported ttrpg system, throw an error if it isn't
 def check_valid_system(system):
@@ -35,9 +35,9 @@ def get_entries_from_file(file):
 # generate a name of the desired gender
 def generate_name(gender):
     # load names from data files
-    if (gender == 'male'):
+    if (gender == 'masc'):
         names = get_entries_from_file('names_boys.txt')
-    elif (gender == 'female'):
+    elif (gender == 'femme'):
         names = get_entries_from_file('names_girls.txt')
     else: # SEPARATE THIS OUT ONCE WE HAVE A LIST OF GENDER NEUTRAL NAMES
         names = get_entries_from_file('names_boys.txt') + get_entries_from_file('names_girls.txt')
