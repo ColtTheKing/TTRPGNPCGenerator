@@ -1,0 +1,128 @@
+{
+  "name": "Height Spreads",
+  "male_spread": [
+    "min_inches": 61.5,
+    "max_inches": 75.6,
+  ],
+  "female_spread": [
+    "min_inches": 56.9,
+    "max_inches": 69.7,
+  ],
+},
+{
+  "name": "Weight Spreads",
+  "male_spread": [
+    "min_pounds": 116.6,
+    "max_pounds": 341.4,
+  ],
+  "female_spread": [
+    "min_pounds": 97.7,
+    "max_pounds": 303.1,
+  ],
+},
+{
+  "name": "Lifespan Spreads",
+  "male_spread": [
+    "min_years": 77.6,
+    "max_years": 94.3,
+  ],
+  "female_spread": [
+    "min_years": 82.9,
+    "max_years": 95.5,
+  ],
+},
+{
+  "name": "Attributes",
+  "attribute_names": [
+    "Strength",
+    "Dexterity",
+    "Stamina",
+    "Charisma",
+    "Manipulation",
+    "Composure",
+    "Intelligence",
+    "Wits",
+    "Resolve",
+  ],
+  "starting_spread": [4, 3, 3, 3, 2, 2, 2, 2, 1],
+},
+{
+  "name": "Skills",
+  "skill_names": [
+    "Athletics",
+    "Brawl",
+    "Craft",
+    "Drive",
+    "Firearms",
+    "Larceny",
+    "Melee",
+    "Stealth",
+    "Survival",
+    "Animal Ken",
+    "Etiquette",
+    "Insight",
+    "Intimidation",
+    "Leadership",
+    "Performance",
+    "Persuasion",
+    "Streetwise",
+    "Subterfuge",
+    "Academics",
+    "Awareness",
+    "Finance",
+    "Investigation",
+    "Medicine",
+    "Occult",
+    "Politics",
+    "Science",
+    "Technology",
+  ],
+  "starting_spreads": [
+    [3, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+    [3, 3, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [4, 3, 3, 3, 2, 2, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

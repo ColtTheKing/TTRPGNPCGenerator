@@ -41,13 +41,13 @@ def check_valid_gender(gender):
 # run the program with vampire the masquerade as the system used for NPC generation
 def run_as_vampire(number, gender):
     current_system = vampire_system.VampireSystem()
-    current_system.generate_npcs(number, gender)
+    print(current_system.generate_npcs(number, gender))
 
 
 # run the program with dungeons & dragons as the system used for NPC generation
 def run_as_dnd(number, gender):
     current_system = dnd_system.DnDSystem()
-    current_system.generate_npcs(number, gender)
+    print(current_system.generate_npcs(number, gender))
 
     # create parsers and subparsers for user to input commands
 def setup_parsers():

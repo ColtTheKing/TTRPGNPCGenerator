@@ -1,7 +1,8 @@
 import random
+from abc import ABC, abstractmethod
 
 
-class TTRPGSystem:
+class TTRPGSystem(ABC):
     "Represents a tabletop system for the characters to be created within"
 
     supported_genders = ["masc", "femme", "neutral", "any"]
@@ -15,7 +16,8 @@ class TTRPGSystem:
                 l.strip() for l in lines
             ]  # take off the extra new line character from each line
 
-    # generate a name of the desired gender
+
+    # returns a name of the desired gender
     def generate_name(self, gender):
         # load names from data files
         if gender == "masc":
@@ -28,20 +30,37 @@ class TTRPGSystem:
         # return a random name from the chosen list
         return names[random.randrange(len(names))]  
 
+
+    #returns a random occupation
     def generate_occupation(self):
         occupations = self.get_entries_from_file("occupations.txt")
         return occupations[random.randrange(len(occupations))]
 
 
+    #returns a random quirk
     def generate_quirk(self):
         quirks = self.get_entries_from_file("quirks.txt")
         return quirks[random.randrange(len(quirks))]
-    
-    
+
+
+    #returns a random spread of stats
+    @abstractmethod
+    def generate_stats(self):
+        pass
+
+
+    #generates the details of a single npc
+    def generate_npc(self, gender):
+        name_entry = self.generate_name(gender)
+        occ_entry = self.generate_occupation()
+        quirk_entry = self.generate_quirk()
+        #stat_entry = self.generate_stats()
+        return str(name_entry) + " the " + str(occ_entry) + ", " + str(quirk_entry) + "."
+
+
+    #generates the details of the desired number of npcs
     def generate_npcs(self, number, gender):
+        npc_details = ""
         for i in range(number):
-            name_entry = self.generate_name(gender)
-            occ_entry = self.generate_occupation()
-            quirk_entry = self.generate_quirk()
-            print(str(name_entry) + " the " + str(occ_entry) + ", " + str(quirk_entry) + ".")
-    
+            npc_details += self.generate_npc(gender) + "\n"
+        return npc_details
