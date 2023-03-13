@@ -4,7 +4,6 @@ import vampire_system
 import dnd_system
 
 supported_systems = ["v5", "vampire", "dnd", "d&d"]
-
 current_system = None
 
 

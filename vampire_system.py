@@ -1,26 +1,52 @@
 import ttrpg_system
+import json
+import random
 
 
 class VampireSystem(ttrpg_system.TTRPGSystem):
     "Represents the tabletop system of vampire the masquerade"
 
-    # open the given file and put each line into an array
-    def get_entries_from_file(self, file):
-        ttrpg_system.TTRPGSystem.get_entries_from_file(self, file)
+    # randomizes the given stat spread
+    def randomize_stat_spread(self, stats):
+        pass #WRITE THIS CODE
 
 
-    # generate a name of the desired gender
-    def generate_name(self, gender):
-        ttrpg_system.TTRPGSystem.generate_name(self, gender)
+    # returns a random spread of attribute points
+    def generate_attributes(self, attribute_data):
+        attributes = attribute_data["names"]
+        attribute_values = attribute_data["starting_spread"]
+        self.randomize_stat_spread(attribute_values)
+
+        attribute_output = "Attributes:"
+        for i in len(attributes):
+            if i % 3 == 0:
+                attribute_output += "\n"
+            attribute_output += attributes[i] + ": " + attribute_values[i] + ", "
+
+        return attribute_output
 
 
-    def generate_occupation(self):
-        ttrpg_system.TTRPGSystem.generate_occupation(self)
+    # returns a random spread of skill points
+    def generate_skills(self, skill_data):
+        skills = skill_data["names"]
+        num_skill_spreads = len(skill_data["starting_spreads"])
+        skill_values = skill_data["starting_spreads"][random.randrange(num_skill_spreads)]
+        self.randomize_stat_spread(skill_values)
 
+        skill_output = "Skills:"
+        for i in len(skills):
+            if i % 3 == 0:
+                skill_output += "\n"
+            skill_output += skills[i] + ": " + skill_values[i] + ", "
 
-    def generate_quirk(self):
-        ttrpg_system.TTRPGSystem.generate_quirk(self)
+        return skill_output
+            
 
+    # returns a random spread of attribute and skill points
+    def generate_stats(self):
+        f = open('v5_data.json')
+        data = json.load(f)
 
-    def generate_npcs(self, number, gender):
-        ttrpg_system.TTRPGSystem.generate_npcs(self, number, gender)
+        self.generate_attributes(data["Attributes"])
+        self.generate_skills(data["Skills"])
+

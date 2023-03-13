@@ -28,37 +28,39 @@ class TTRPGSystem(ABC):
             names = self.get_entries_from_file("names_boys.txt") + self.get_entries_from_file("names_girls.txt")
 
         # return a random name from the chosen list
-        return names[random.randrange(len(names))]  
+        return names[random.randrange(len(names))]
 
 
-    #returns a random occupation
+    # returns a random occupation
     def generate_occupation(self):
         occupations = self.get_entries_from_file("occupations.txt")
         return occupations[random.randrange(len(occupations))]
 
 
-    #returns a random quirk
+    # returns a random quirk
     def generate_quirk(self):
         quirks = self.get_entries_from_file("quirks.txt")
         return quirks[random.randrange(len(quirks))]
 
 
-    #returns a random spread of stats
+    # returns a random spread of stats
     @abstractmethod
     def generate_stats(self):
         pass
 
 
-    #generates the details of a single npc
+    # generates the details of a single npc
     def generate_npc(self, gender):
         name_entry = self.generate_name(gender)
         occ_entry = self.generate_occupation()
         quirk_entry = self.generate_quirk()
-        #stat_entry = self.generate_stats()
-        return str(name_entry) + " the " + str(occ_entry) + ", " + str(quirk_entry) + "."
+        stat_entry = self.generate_stats()
+        
+        npc_details = str(name_entry) + " the " + str(occ_entry) + ", " + str(quirk_entry) + "."
+        npc_details += "\n" + stat_entry
 
 
-    #generates the details of the desired number of npcs
+    # generates the details of the desired number of npcs
     def generate_npcs(self, number, gender):
         npc_details = ""
         for i in range(number):
