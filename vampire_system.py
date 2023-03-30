@@ -1,16 +1,11 @@
 import ttrpg_system
-<<<<<<< HEAD
-=======
 import json
->>>>>>> a2a7e290853f191edf729f1e998eaa88ff662191
 import random
 
 
 class VampireSystem(ttrpg_system.TTRPGSystem):
     "Represents the tabletop system of vampire the masquerade"
 
-<<<<<<< HEAD
-=======
     # randomizes the given stat spread
     def randomize_stat_spread(self, stats):
         pass #WRITE THIS CODE
@@ -54,5 +49,3 @@ class VampireSystem(ttrpg_system.TTRPGSystem):
 
         self.generate_attributes(data["Attributes"])
         self.generate_skills(data["Skills"])
->>>>>>> a2a7e290853f191edf729f1e998eaa88ff662191
-
