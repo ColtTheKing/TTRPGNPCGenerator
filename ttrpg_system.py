@@ -59,6 +59,8 @@ class TTRPGSystem(ABC):
         npc_details = str(name_entry) + " the " + str(occ_entry) + ", " + str(quirk_entry) + "."
         npc_details += "\n" + stat_entry
 
+        return npc_details
+
 
     # generates the details of the desired number of npcs
     def generate_npcs(self, number, gender):
@@ -66,3 +68,10 @@ class TTRPGSystem(ABC):
         for i in range(number):
             npc_details += self.generate_npc(gender) + "\n"
         return npc_details
+
+class TTRPG_NPC(ABC):
+    "Represents the NPCs themselves"
+
+    @abstractmethod
+    def print_npc(self):
+        pass
