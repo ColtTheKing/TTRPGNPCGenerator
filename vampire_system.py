@@ -21,7 +21,9 @@ class VampireSystem(ttrpg_system.TTRPGSystem):
         for i in range(len(attributes)):
             if i % 3 == 0:
                 attribute_output += "\n"
-            attribute_output += attributes[i] + ": " + str(attribute_values[i]) + ", "
+            attribute_output += attributes[i] + ": " + str(attribute_values[i])
+            if i < len(attributes)-1:
+                attribute_output += ", "
 
         return attribute_output
 
@@ -37,7 +39,9 @@ class VampireSystem(ttrpg_system.TTRPGSystem):
         for i in range(len(skills)):
             if i % 3 == 0:
                 skill_output += "\n"
-            skill_output += skills[i] + ": " + str(skill_values[i]) + ", "
+            skill_output += skills[i] + ": " + str(skill_values[i])
+            if i < len(skills)-1:
+                skill_output += ", "
 
         return skill_output
             
@@ -66,11 +70,15 @@ class VampireSystem(ttrpg_system.TTRPGSystem):
         for i in range(len(self.attributes)):
             if i % 3 == 0:
                 attribute_output += "\n"
-            attribute_output += self.attributes[i] + ": " + str(npc.attribute_values[i]) + ", "
+            attribute_output += self.attributes[i] + ": " + str(npc.attribute_values[i])
+            if i < len(self.attributes)-1:
+                attribute_output += ", "
 
         for i in range(len(self.skills)):
             if i % 3 == 0:
                 skill_output += "\n"
-            skill_output += self.skills[i] + ": " + str(npc.skill_values[i]) + ", "
+            skill_output += self.skills[i] + ": " + str(npc.skill_values[i])
+            if i < len(self.skills)-1:
+                skill_output += ", "
 
         npc_details += "\nATTRIBUTES:" + attribute_output + "\nSKILLS:" + skill_output

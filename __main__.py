@@ -2,6 +2,7 @@ import argparse
 import ttrpg_system
 import vampire_system
 import dnd_system
+import pdf_editor
 
 supported_systems = ["v5", "vampire", "dnd", "d&d"]
 current_system = None
@@ -111,3 +112,5 @@ if system == "v5" or system == "vampire":
     run_as_vampire(number, gender)
 elif system == "dnd" or system == "d&d":
     run_as_dnd(number, gender)
+
+pdf_editor.edit_pdf()
