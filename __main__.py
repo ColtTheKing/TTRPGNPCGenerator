@@ -4,14 +4,14 @@ import vampire_system
 import dnd_system
 import pdf_editor
 
-supported_systems = ["v5", "vampire", "dnd", "d&d"]
+SUPPORTED_SYSTEMS = ["v5", "vampire", "dnd", "d&d"]
 current_system = None
 
 
 # ensure the requested system is a supported ttrpg system, throw an error if it isn't
 def check_valid_system(system):
-    if not system.lower() in supported_systems:
-        s_systems = ", ".join(supported_systems)
+    if not system.lower() in SUPPORTED_SYSTEMS:
+        s_systems = ", ".join(SUPPORTED_SYSTEMS)
         raise argparse.ArgumentTypeError(
             "%s is not a supported ttrpg system. Supported systems are %s"
             % (system, s_systems)
@@ -29,8 +29,8 @@ def check_valid_number(number):
 
 # ensure the requested gender is a supported gender, throw an error if it isn't
 def check_valid_gender(gender):
-    if not gender.lower() in ttrpg_system.TTRPGSystem.supported_genders:
-        s_genders = ", ".join(ttrpg_system.TTRPGSystem.supported_genders)
+    if not gender.lower() in ttrpg_system.supported_genders:
+        s_genders = ", ".join(ttrpg_system.supported_genders)
         raise argparse.ArgumentTypeError(
             "%s is not a supported gender. Supported genders are %s"
             % (gender, s_genders)
@@ -39,17 +39,19 @@ def check_valid_gender(gender):
 
 
 # run the program with vampire the masquerade as the system used for NPC generation
-def run_as_vampire(number, gender):
+def run_as_vampire():
+    global current_system
     current_system = vampire_system.VampireSystem()
-    print(current_system.generate_npcs(number, gender))
 
 
 # run the program with dungeons & dragons as the system used for NPC generation
-def run_as_dnd(number, gender):
+def run_as_dnd():
+    global current_system
     current_system = dnd_system.DnDSystem()
-    print(current_system.generate_npcs(number, gender))
 
     # create parsers and subparsers for user to input commands
+
+
 def setup_parsers():
     # initializing argument parser
     parser = argparse.ArgumentParser(
@@ -105,12 +107,20 @@ args = vars(parser.parse_args())
 
 # use the arguments to determine which system to run and what parameters to use
 system = args["system"].lower()
-number = args['number']
-gender = args['gender']
+number = args["number"]
+gender = args["gender"]
 
 if system == "v5" or system == "vampire":
-    run_as_vampire(number, gender)
+    run_as_vampire()
 elif system == "dnd" or system == "d&d":
-    run_as_dnd(number, gender)
+    run_as_dnd()
 
-pdf_editor.edit_pdf()
+npc_list = current_system.generate_npcs(number, gender)
+
+print("==============================================================")
+for i in range(len(npc_list)):
+    npc_list[i].print_npc()
+    print("==============================================================")
+    print()
+
+# pdf_editor.edit_pdf() # sample code for editing pdfs

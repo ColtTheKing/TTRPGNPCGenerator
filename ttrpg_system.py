@@ -1,11 +1,10 @@
 import random
 from abc import ABC, abstractmethod
 
+supported_genders = ["masc", "femme", "neutral", "any"]
 
 class TTRPGSystem(ABC):
     "Represents a tabletop system for the characters to be created within"
-
-    supported_genders = ["masc", "femme", "neutral", "any"]
 
     # open the given file and put each line into an array
     def get_entries_from_file(self, file):
@@ -43,34 +42,28 @@ class TTRPGSystem(ABC):
         return quirks[random.randrange(len(quirks))]
 
 
-    # returns a random spread of stats
-    @abstractmethod
-    def generate_stats(self):
-        pass
-
-
     # generates the details of a single npc
+    @abstractmethod
     def generate_npc(self, gender):
-        name_entry = self.generate_name(gender)
-        occ_entry = self.generate_occupation()
-        quirk_entry = self.generate_quirk()
-        stat_entry = self.generate_stats()
-        
-        npc_details = str(name_entry) + " the " + str(occ_entry) + ", " + str(quirk_entry) + "."
-        npc_details += "\n" + stat_entry
-
-        return npc_details
+        pass
 
 
     # generates the details of the desired number of npcs
     def generate_npcs(self, number, gender):
-        npc_details = ""
+        npc_list = []
         for i in range(number):
-            npc_details += self.generate_npc(gender) + "\n"
-        return npc_details
+            npc_list.append(self.generate_npc(gender))
+        return npc_list
+
 
 class TTRPG_NPC(ABC):
     "Represents the NPCs themselves"
+
+    def __init__(self, name_entry, occ_entry, quirk_entry):
+        self.name_entry = name_entry
+        self.occ_entry = occ_entry
+        self.quirk_entry = quirk_entry
+
 
     @abstractmethod
     def print_npc(self):
