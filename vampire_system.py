@@ -61,6 +61,14 @@ class Vampire_NPC(ttrpg_system.TTRPG_NPC):
         print(npc_details)
 
     def stats_to_text(self):
+        stat_text = "==========================ATTRIBUTES=========================="
+        stat_text += self.attributes_to_text() + "\n"
+        stat_text += "============================SKILLS============================"
+        stat_text += self.skills_to_text()
+
+        return stat_text
+
+    def attributes_to_text(self):
         attribute_output = ""
         for i in range(len(self.attribute_entry)):
             if i % 3 == 0:
@@ -73,6 +81,9 @@ class Vampire_NPC(ttrpg_system.TTRPG_NPC):
             if i % 3 != 2:
                 attribute_output += "   |   "
 
+        return attribute_output
+
+    def skills_to_text(self):
         skill_output = ""
         for i in range(len(self.skill_entry)):
             if i % 3 == 0:
@@ -85,9 +96,4 @@ class Vampire_NPC(ttrpg_system.TTRPG_NPC):
             if i % 3 != 2:
                 skill_output += "   |   "
 
-        stat_text = "==========================ATTRIBUTES=========================="
-        stat_text += attribute_output + "\n"
-        stat_text += "============================SKILLS============================"
-        stat_text += skill_output
-
-        return stat_text
+        return skill_output
